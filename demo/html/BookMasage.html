@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>图书信息表</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <!--导航栏-->
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <!--缩放复选按钮-->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                           
+            </button>
+            <a class="navbar-brand" href="https://www.baidu.com"><strong>图书管理系统</strong></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li><a href="https://www.baidu.com">用户列表</a></li>
+                <li><a href="https://www.baidu.com">图书借阅与归还</a></li>
+                <li><a href="https://www.bilibili.com">书库</a></li>
+                <li><a href="https://www.bilibili.com">首页公告管理</a></li>
+                <li><a href="https://www.bilibili.com">图书借阅统计</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="administrator">
+        <div class="ddbox">
+            <div class="country">
+                国家:
+                <select>
+                    <option></option>
+                    <option>中国</option>
+                    <option>韩国</option>
+                    <option>美国</option>
+                    <option>法国</option>
+                </select>
+            </div>
+            <div class="type">
+                类型:
+                <select>
+                    <option></option>
+                    <option>小说</option>
+                    <option>散文</option>
+                    <option>诗集</option>
+                    <option>绘本</option>
+              </select>
+            </div>
+
+            <div class="length">
+                篇幅:
+                <select>
+                    <option></option>
+                    <option>长篇</option>
+                    <option>中篇</option>
+                    <option>短篇</option>
+            </select>
+            </div>
+
+            <div class="theme">
+                主题:
+                <select>
+                    <option></option>
+                    <option>科学</option>
+                    <option>自然</option>
+                    <option>哲学</option>
+                    <option>传记</option>
+                    <option>童话</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="addAndQuery">
+            <button class="addButton" type="button">+</button>
+            <button class="queryButton" type="button">查询</button>
+        </div>
+
+        <div class="search">
+            <input class="text" type="text"><input class="submit" type="submit" value="搜索">
+        </div>
+
+        <div align="center" class="table">
+            <table border="1" class="table1">
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table border="1" class="table1">
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table border="1" class="table1">
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="">
+                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="page">
+            <button class="pageNum" @click="changePage"><a href="https://www.baidu.com">1</a></button>
+            <button class="pageNum" @click="changePage">2</button>
+            <button class="pageNum" @click="changePage">3</button>
+            <button class="pageNum" @click="changePage">4</button>
+            <button class="pageNum" @click="changePage">5</button>
+            <button class="pageNum" @click="changePage">6</button>
+            <button class="pageNum" @click="changePage">...</button>
+            <button class="pageNum" @click="changePage">50</button> &nbsp;&nbsp;&nbsp;&nbsp;跳转至
+            <input style="background-color: #fff;border: none;outline: none;width: 3%;" type="text" value="2"></input>&nbsp;&nbsp;页
+            <button class="pageNum" @click="changePage">跳转</button>
+        </div>
+    </div>
+
+
+
+</body>
+
+<script type="text/javascript">
+    new Vue({
+        el: "#administrator",
+        data() {
+            return {
+                imgSrc: "img/search.jpg",
+                index: 1,
+            }
+        },
+        methods: {
+            quitToMainInterface() {
+                window.location.href = "https://www.iqiyi.com"
+            },
+            list() {
+                // window.open("https://www.baidu.com"); //打开新的页面
+                window.location.href = "https://www.baidu.com"; //跳转到指定页面
+            },
+            br() {
+                window.location.href = "https://www.bilibili.com/"
+            },
+            notice() {
+                window.location.href = "https://www.github.com"
+            },
+            book() {
+                window.location.href = "https://www.google.com.hk"
+            },
+            statics() {
+                window.location.href = "http://localhost:8080/#/hero"
+            },
+
+        }
+    })
+</script>
+
+<style scoped>
+    .container-fluid .collapse {
+        margin-left: 150px;
+    }
+    
+    .container-fluid .collapse ul li {
+        padding-left: 150px;
+        color: white;
+        font-size: 15px;
+        font-weight: 600;
+    }
+    
+    .container-fluid .navbar-header .navbar-brand {
+        font-size: 20px;
+    }
+    
+    .container-fluid .collapse ul li:hover {
+        color: black;
+    }
+    
+    .container-fluid {
+        background-color: #aec;
+    }
+    
+    .title {
+        font-size: 10px;
+        background-color: #ace;
+        width: 100%;
+    }
+    
+    #administrator {
+        background: #aed;
+        height: 100%;
+        width: 100%;
+    }
+    
+    #administrator .ddbox {
+        margin-left: 300px;
+    }
+    
+    #administrator .ddbox .country,
+    .type,
+    .length,
+    .theme {
+        float: left;
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: 600;
+        margin-left: 100px;
+    }
+    
+    #administrator .addAndQuery {
+        float: left;
+        margin-top: 20px;
+        font-size: 15px;
+        font-weight: 600;
+        margin-left: 10px;
+    }
+    
+    #administrator .addAndQuery .addButton {
+        background-color: #aec;
+        text-align: center;
+        width: 40px;
+        font-size: 15px;
+    }
+    
+    #administrator .addAndQuery .addButton:hover {
+        background-color: #fff;
+    }
+    
+    #administrator .addAndQuery .addButton:active {
+        transform: translateY(5px);
+    }
+    
+    #administrator .addAndQuery .queryButton {
+        background-color: #aec;
+        text-align: center;
+        width: 80px;
+        font-size: 15px;
+    }
+    
+    #administrator .addAndQuery .queryButton:hover {
+        background-color: #fff;
+    }
+    
+    #administrator .addAndQuery .queryButton:active {
+        transform: translateY(5px);
+    }
+    
+    #administrator .search {
+        margin-left: 1000px;
+        padding-top: 100px;
+    }
+    
+    #administrator .search .text {
+        height: 30px;
+    }
+    
+    #administrator .search .submit {
+        border: none;
+        background-color: dodgerblue;
+        outline: none;
+        font-size: 18px;
+    }
+    
+    #administrator .search .submit:hover {
+        background: #fff;
+    }
+    
+    #administrator .table {
+        margin-top: 30px;
+        border: none;
+        outline: none;
+    }
+    
+    #administrator .table1 {
+        background-color: #fff;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+    }
+    
+    #administrator .table1 .tab-btn,
+    .pub-txt {
+        float: right;
+        margin-right: 1%;
+        text-align: center;
+        height: 25px;
+        border: none;
+        outline: none;
+    }
+    
+    #administrator .table1 .tab-btn:hover {
+        background-color: #fff;
+    }
+    
+    #administrator .table1 .tab-btn:active {
+        transform: translateY(3px);
+    }
+    
+    #administrator .page {
+        margin-left: 50%;
+    }
+    
+    #administrator .page .pageNum {
+        margin-left: 10px;
+        background-color: #fff;
+        font-size: 15px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+    }
+    
+    #administrator .page .pageNum:hover {
+        color: blue;
+    }
+    
+    #administrator .page .pageNum:active {
+        transform: translateY(3px);
+    }
+</style>
+
+</html>
