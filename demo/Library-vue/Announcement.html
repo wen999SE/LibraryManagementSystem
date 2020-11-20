@@ -82,6 +82,43 @@
         input:focus {
             background-color: rgb(37, 216, 192);
         }
+        
+        .again-modal {
+            display: block;
+            /* 默认显示 */
+            position: fixed;
+            /* 固定定位 */
+            z-index: 1;
+            /* 设置在顶层 */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .again-modal .again-container {
+            width: 400px;
+            height: 100px;
+            margin-left: 480px;
+            margin-top: 260px;
+            /* width: 50%;
+            height: 50%;
+            margin-left: 20%;
+            margin-top: 10%;*/
+            border: 1px solid lightblue;
+            background: rgb(8, 228, 173);
+        }
+        
+        .again-modal .again-container .again-tips {
+            margin-left: 10px;
+        }
+        
+        .again-modal .again-container .button {
+            float: right;
+        }
     </style>
 
 </head>
@@ -103,11 +140,29 @@
         <div class="main-windows">
             <!--主界面-->
             <div class="div-inputtext">
-                <p><input type="text" class="introduce-text" placeholder="修改公告"><button class="introduce-button" type="submit" @click="again()">发布</button></p>
+                <p><input type="text" class="introduce-text" placeholder="修改公告"><button class="introduce-button" type="submit" v-on:click="show">发布</button></p>
+                <!--点击发布按钮进入到确认弹窗-->
                 <div class="introduce">
 
                 </div>
             </div>
+        </div>
+        <div class=again-modal v-show="Visible">
+            <!--确认弹窗-->
+            <div class="again-container">
+                <div class="again-tips">
+                    <h3>请确定需要修改公告？</h3>
+                </div>
+                <div class="button">
+                    <Button type="submit" id="consent" v-on:click="hide">确定</Button>
+                    <!--按下确认按钮，文本域的内容会显示在类名为“introduce”的div中，同时隐藏弹窗-->
+                    <Button type="submit" id="disagree" v-on:click="hide">取消</Button>
+                    <!--按下取消按钮，隐藏弹窗，无任何修改-->
+                </div>
+
+            </div>
+
+
         </div>
     </div>
 
@@ -116,11 +171,14 @@
         new Vue({
             el: "#main",
             data: {
-
+                Visible: false, //设置不显示
             },
             methods: {
-                again: function() {
-                    alert("确定发布？");
+                show: function() {
+                    this.Visible = !this.Visible
+                },
+                hide: function() {
+                    this.Visible = !this.Visible
                 }
             },
         })
