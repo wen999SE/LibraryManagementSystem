@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>图书信息表</title>
+    <title>图书借阅表</title>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
@@ -11,6 +11,9 @@
 </head>
 
 <body>
+
+
+
     <!--导航栏-->
     <div class="container-fluid">
         <div class="navbar-header">
@@ -33,91 +36,47 @@
         </div>
     </div>
     <div id="administrator">
-        <div class="edition-modal" v-show="Visible">
-            <!--查看的编辑弹窗-->
-            <div class="edition-container">
-                <button v-on:click="hide" class="btn btn-info btn-md" id="closeFlag">
-                    <span class="glyphicon glyphicon-remove"></span> Remove
-                </button>
+        <div class="Borrower-modal" v-show="Visible">
+            <!--查看的借阅人弹窗-->
+            <div class="Borrower-container">
+                <!-- 借阅人详情 -->
+                <div class="Borrower-detail-div">
+                    <div class="Borrower-detail" id="none">
+                        <h3>《不知道》</h3>
+                    </div>
+                    <div class="Borrower-detail" id="remains">
+                        <h3>剩余</h3>
+                    </div>
+                    <div class="Borrower-detail" id="borrow-number">
+                        <h3>借出数</h3>
+                    </div>
+                </div>
+                <div class="table-detail">
+                    <!--借阅详情表-->
+                    <table id="list-table" border="1">
+                        <thead>
+                            <tr>
+                                <th>借阅人</th>
+                                <th>借阅日期</th>
+                                <th>剩余时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>空</td>
+                                <td>空</td>
+                                <td>空</td>
+                            </tr>
 
-                <!-- 编辑详情 -->
-                <div class="edition-detail-div">
-                    <div class="edition-detail" id="book-name" value="书名">
-                        <div class="name">《书名》</div>
-                    </div>
-                    <div class="edition-detail" id="book-contry">
-                        <form action="">
-                            <select name="contry" id="contry">
-                                 <option value="contry">国家</option>
-                                 <option value="china">《中国》</option>
-                                 <option value="">《法国》</option>
-                            </select>
-                        </form>
-                    </div>
-                    <div class="edition-detail" id="book-trait">
-                        <form action="">
-                            <select name="contry" id="contry">
-                                 <option value="contry">类型</option></option>
-                                 <option value="">《科普》</option>
-                                 <option value="">《历史》</option>
-                            </select>
-                        </form>
-                    </div>
-                    <div class="edition-detail" id="book-subject">
-                        <form action="">
-                            <select name="subject" id="subject">
-                                 <option value="subject">主题</option>
-                                 <option value="">《成人阅读》</option>
-                                 <option value="">《儿童不宜》</option>
-                            </select>
-                        </form>
-                    </div>
-                    <div class="edition-detail" id="book-length">
-                        <form action="">
-                            <select name="length" id="length">
-                                 <option value="length">篇幅</option>
-                                 <option value="">《1》</option>
-                                 <option value="">《2》</option>
-                            </select>
-                        </form>
-                    </div>
-                </div>
-                <div class="edition-detail-two-div">
-                    <div class="edition-detail-tow" id="number-ascend">
-                        <form action="">
-                            <select name="ascend" id="ascend">
-                                 <option value="ascend">上架数量</option></option>
-                                 <option value="">《1》</option>
-                                 <option value="">《2》</option>
-                            </select>
-                        </form>
-                    </div>
-                    <div class="edition-detail-two" id="number-undercarriage">
-                        <form action="">
-                            <select name="undercarriage" id="undercarriage">
-                                 <option value="undercarriage">下架数量</option>
-                                 <option value="">《1》</option>
-                                 <option value="">《2》</option>
-                            </select>
-                        </form>
-                    </div>
-                </div>
-                <div class="edition-detail-three-div">
-                    <div class="introduce-book">
-                        <div id="introduce">简介</div>
-                    </div>
-                    <div class="book-words">
-                        <div id="works">内容111111111111111111111111111111111111111112222222222233333333333333311111111111111111111111111111111111111111111111111111</div>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="button-borrow">
-                    <button id="consent" v-on:click="hide">保存</button>
+                    <button id="consent" v-on:click="hide">保存</button></button>
                 </div>
 
-
             </div>
-
 
         </div>
 
@@ -169,7 +128,6 @@
 
 
         <div class="addAndQuery">
-            <button class="addButton" type="button" v-on:click="show">+</button>
             <button class="queryButton" type="button">查询</button>
         </div>
 
@@ -182,92 +140,46 @@
                 <tr>
                     <td width="1000px" height="35px">
                         <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" v-on:click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+                            <input class="tab-btn" type="button" value="已借">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td width="1000px" height="35px">
                         <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" v-on:click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+
+                            <input class="tab-btn" type="button" value="未借" @click="">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td width="1000px" height="35px">
                         <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" v-on:click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+                            <input class="tab-btn" type="button" value="未借" @click="">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td width="1000px" height="35px">
                         <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+                            <input class="tab-btn" type="button" value="未借" @click="">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td width="1000px" height="35px">
                         <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
-                        </div>
-                    </td>
-                </tr>
-            </table>
-            <table border="1" class="table1">
-                <tr>
-                    <td width="1000px" height="35px">
-                        <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="1000px" height="35px">
-                        <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="1000px" height="35px">
-                        <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="1000px" height="35px">
-                        <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td width="1000px" height="35px">
-                        <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+                            <input class="tab-btn" type="button" value="未借">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
                         </div>
                     </td>
                 </tr>
@@ -276,45 +188,96 @@
                 <tr>
                     <td width="1000px" height="35px">
                         <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+                            <input class="tab-btn" type="button" value="未借">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td width="1000px" height="35px">
                         <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+                            <input class="tab-btn" type="button" value="未借" @click="">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td width="1000px" height="35px">
                         <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+                            <input class="tab-btn" type="button" value="未借" @click="">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td width="1000px" height="35px">
                         <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+                            <input class="tab-btn" type="button" value="未借" @click="">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td width="1000px" height="35px">
                         <div>
-                            xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-                            <input class="tab-btn" style="background-color: #aec;" type="button" value="编辑" @click="show">
-                            <input class="pub-txt" style="background-color: #fff;" type="text" disabled="disabled" value="2020年5月5日上架" @click="">
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+                            <input class="tab-btn" type="button" value="未借" @click="">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <table border="1" class="table1">
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+                            <input class="tab-btn" type="button" value="未借" @click="">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+
+                            <input class="tab-btn" type="button" value="未借" @click="">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+
+                            <input class="tab-btn" type="button" value="未借" @click="">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+
+                            <input class="tab-btn" type="button" value="未借" @click="">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="1000px" height="35px">
+                        <div>
+                            <input type="button" v-on:click="show" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" style="background-color: white;outline: none;border: none;"></input>
+
+                            <input class="tab-btn" type="button" value="已借" @click="">
+                            <input class="pub-txt" style="border:none;outline:none" type="text" value="2020年5月5日上架" @click="">
                         </div>
                     </td>
                 </tr>
@@ -334,6 +297,8 @@
             <button class="pageNum" @click="">跳转</button>
         </div>
     </div>
+
+
 
 </body>
 
@@ -373,7 +338,7 @@
             },
             hide() {
                 this.Visible = !this.Visible;
-            },
+            }
 
         }
     })
@@ -636,146 +601,6 @@
     
     #administrator .page .pageNum:active {
         transform: translateY(3px);
-    }
-    
-    .edition-modal {
-        display: block;
-        /* 默认显示 */
-        position: fixed;
-        /* 固定定位 */
-        z-index: 1;
-        /* 设置在顶层 */
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
-    }
-    
-    .edition-container {
-        width: 1000px;
-        height: 430px;
-        margin-left: 280px;
-        margin-top: 130px;
-        /* width: 50%;
-            height: 50%;
-            margin-left: 20%;
-            margin-top: 10%;*/
-        border: 1px solid lightblue;
-        background: rgb(226, 120, 226);
-    }
-    
-    .edition-container .edition-detail-div {
-        margin-top: 50px;
-        margin-left: 90px;
-        width: 600px;
-        height: 100px;
-        border: 1px solid lightblue;
-    }
-    
-    .edition-container .edition-detail-div .edition-detail {
-        width: 130px;
-        height: 40px;
-        background-color: gray;
-        position: absolute;
-        padding-bottom: 5px;
-    }
-    
-    #book-contry {
-        margin-left: 200px;
-    }
-    
-    #book-trait {
-        margin-left: 400px;
-    }
-    
-    #book-subject {
-        margin-top: 50px;
-    }
-    
-    #book-length {
-        margin-top: 50px;
-        margin-left: 200px;
-    }
-    
-    .edition-container .edition-detail-two-div {
-        float: right;
-        margin-top: -100px;
-        margin-left: 0px;
-        width: 200px;
-        height: 100px;
-        border: 1px solid lightblue;
-    }
-    
-    .edition-container .edition-detail-three-div {
-        margin-top: 10px;
-        margin-left: 90px;
-        width: 750px;
-        height: 220px;
-        border: 1px solid lightblue;
-    }
-    
-    .edition-container .edition-detail-three-div .introduce-book {
-        border: 1px solid lightblue;
-        width: 130px;
-        height: 40px;
-        background-color: gray;
-    }
-    
-    #introduce {
-        text-align: center;
-        margin-top: 10px;
-    }
-    
-    .edition-detail-three-div .book-words {
-        border: 1px solid lightblue;
-        width: 700px;
-        height: 150px;
-        background-color: gray;
-        margin-top: 10px;
-        padding-left: 10px;
-        padding-top: 10px;
-        word-break: break-all;
-        /* 设置元素不溢出，溢出则换行 */
-    }
-    
-    .edition-container .button-borrow {
-        width: 100px;
-        height: 100px;
-        border: 1px solid lightblue;
-        float: right;
-        margin-top: -100px;
-        margin-right: 40px;
-    }
-    
-    #consent {
-        background: rgb(34, 190, 230);
-        width: 70px;
-        cursor: pointer;
-        float: right;
-        margin-top: 70px;
-    }
-    
-    .name {
-        text-align: center;
-        margin-top: 10px;
-    }
-    
-    #administrator .edition-modal .edition-container .edition-detail-div .edition-detail select {
-        width: 110px;
-        height: 35px;
-        margin-left: 10px;
-        margin-top: 5px;
-    }
-    
-    .btn {
-        margin-left: 90%;
-    }
-    
-    .glyphicon {
-        text-align: center;
     }
 </style>
 
