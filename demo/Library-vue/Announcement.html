@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发布公告</title>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <style>
+        .top {
+            overflow: hidden;
+            background-color: rgb(24, 141, 125);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+            height: 10%;
+        }
+        
+        .top a {
+            float: right;
+            display: table;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 23px 30px;
+            text-decoration: none;
+            font-size: 17px;
+            margin-right: 0px;
+            border: solid 0px coral;
+        }
+        
+        .top a:hover {
+            background-color: rgb(56, 216, 195);
+        }
+        
+        .library-topimg {
+            height: 55px;
+            width: 300px;
+            float: left;
+            padding: 5px 5px;
+        }
+        
+        .main-windows {
+            background: rgb(33, 211, 143);
+            position: fixed;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .main-windows .div-inputtext {
+            width: 1300px;
+        }
+        
+        .main-windows p {
+            float: right;
+            margin-top: -50px;
+            margin-right: 300px;
+        }
+        
+        .main-windows .introduce-text {
+            width: 600px;
+            height: 25px;
+        }
+        
+        .main-windows .introduce-button {
+            background: cadetblue;
+            width: 70px;
+            height: 30px;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        
+        .main-windows .div-inputtext .introduce {
+            width: 700px;
+            height: 500px;
+            border: oldlace 1px solid;
+            margin-left: 300px;
+            margin-top: 150px;
+            background-color: rgb(236, 233, 227);
+        }
+        
+        input:focus {
+            background-color: rgb(37, 216, 192);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="main">
+        <!--主容器-->
+        <div class="top">
+            <!-- 头部菜单栏 -->
+            <img src="./img/1.jpg" class="library-topimg">
+            <!--菜单栏图标-->
+            <a href="ListOfUser.html">用户列表</a>
+            <a href="#b">图书借阅与归还</a>
+            <a href="#c">书库</a>
+            <a href="#f">注销用户</a>
+            <a href="Announcement.html">首页公告管理</a>
+            <a href="#e">图书借阅统计</a>
+        </div>
+        <div class="main-windows">
+            <!--主界面-->
+            <div class="div-inputtext">
+                <p><input type="text" class="introduce-text" placeholder="修改公告"><button class="introduce-button" type="submit" @click="again()">发布</button></p>
+                <div class="introduce">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: "#main",
+            data: {
+
+            },
+            methods: {
+                again: function() {
+                    alert("确定发布？");
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
