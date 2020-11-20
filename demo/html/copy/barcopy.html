@@ -36,6 +36,7 @@
         </div>
     </div>
     <div id="administrator">
+        <button class="text" v-on:click="show">显示</button>
         <div class="Borrower-modal" v-show="Visible">
             <!--查看的借阅人弹窗-->
             <div class="Borrower-container">
@@ -73,51 +74,7 @@
                 </div>
 
                 <div class="button-borrow">
-                    <button id="consent" v-on:click="hide">添加</button>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="Borrower-modal" v-show="Visible">
-            <!--查看的借阅人弹窗-->
-            <div class="Borrower-container">
-                <!-- 借阅人详情 -->
-                <div class="Borrower-detail-div">
-                    <div class="Borrower-detail" id="none">
-                        <h3>《不知道》</h3>
-                    </div>
-                    <div class="Borrower-detail" id="remains">
-                        <h3>剩余</h3>
-                    </div>
-                    <div class="Borrower-detail" id="borrow-number">
-                        <h3>借出数</h3>
-                    </div>
-                </div>
-                <div class="table-detail">
-                    <!--借阅详情表-->
-                    <table id="list-table" border="1">
-                        <thead>
-                            <tr>
-                                <th>借阅人</th>
-                                <th>借阅日期</th>
-                                <th>剩余时间</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>空</td>
-                                <td>空</td>
-                                <td>空</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="button-borrow">
-                    <button id="consent" v-on:click="hide">保存</button>
+                    <button id="consent" v-on:click="hide">确定</button>
                 </div>
 
             </div>
@@ -172,7 +129,7 @@
 
 
         <div class="addAndQuery">
-            <button class="addButton" type="button" v-on:click="show">+</button>
+            <button class="addButton" type="button" @click="">+</button>
             <button class="queryButton" type="button">查询</button>
         </div>
 
@@ -428,20 +385,19 @@
         /* 固定定位 */
         z-index: 1;
         /* 设置在顶层 */
-        margin-left: 50px;
+        left: 0;
         top: 0;
         width: 100%;
         height: 100%;
         overflow: auto;
-        /*
         background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);*/
+        background-color: rgba(0, 0, 0, 0.4);
     }
     
     .Borrower-container {
         width: 1000px;
         height: 400px;
-        margin-left: 300px;
+        margin-left: 200px;
         margin-top: 100px;
         /* width: 50%;
             height: 50%;
@@ -494,13 +450,13 @@
         margin-top: 50px;
     }
     
-    #administrator .Borrower-modal .Borrower-container .table-detail th {
+    th {
         background-color: gray;
         height: 50px;
         width: 1px;
     }
     
-    #administrator .Borrower-modal .Borrower-container .table-detail tr {
+    tr {
         text-align: center;
     }
     
