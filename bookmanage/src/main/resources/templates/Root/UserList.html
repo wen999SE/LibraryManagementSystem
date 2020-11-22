@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <title>用户详情列表</title>
+    <style>
+        th {
+            text-align: center;
+        }
+        
+        td {
+            text-align: center;
+        }
+        
+        .top {
+            overflow: hidden;
+            background-color: rgb(24, 141, 125);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+            height: 10%;
+        }
+        
+        .top a {
+            float: right;
+            display: table;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 23px 30px;
+            text-decoration: none;
+            font-size: 17px;
+            margin-right: 0px;
+            border: solid 0px coral;
+        }
+        
+        .top a:hover {
+            background-color: rgb(56, 216, 195);
+        }
+        
+        .library-topimg {
+            height: 55px;
+            width: 300px;
+            float: left;
+            padding: 5px 5px;
+        }
+        
+        .main-windows {
+            background: rgb(33, 211, 143);
+            position: fixed;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .main-windows p {
+            float: right;
+            margin-top: 90px;
+            margin-right: 90px;
+        }
+        
+        .main-windows .query-button {
+            background: cadetblue;
+            width: 70px;
+        }
+        
+        button {
+            cursor: pointer;
+        }
+        
+        .main-windows .account {
+            border: chocolate 0px solid;
+            width: 800px;
+            margin-top: 150px;
+            margin-left: 220px;
+        }
+        
+        .main-windows .account th {
+            padding: 1px 21px;
+            background: white;
+        }
+        
+        .main-windows .account td {
+            padding: 7px 21px;
+            background: turquoise;
+        }
+        
+        .main-windows .account .show {
+            padding: 5px 1px;
+            width: 100px;
+        }
+        
+        .main-windows .account .cancel {
+            padding: 5px 1px;
+            width: 100px;
+        }
+        
+        .main-windows .account-container {
+            width: 1000px;
+            height: 400px;
+            margin-left: 200px;
+            margin-top: 100px;
+            border: 1px solid lightblue;
+            background: rgb(226, 120, 226);
+        }
+        
+        .main-windows .account-detail {
+            border: rgb(210, 30, 30) 1px solid;
+            width: 800px;
+            margin-top: 50px;
+            margin-left: 30px;
+        }
+        
+        .account-detail-button {
+            border: rgb(153, 143, 39) 0px solid;
+            width: 140px;
+            float: right;
+            margin-top: 25%;
+        }
+        
+        #consent {
+            background: rgb(34, 190, 230);
+            width: 70px;
+        }
+        
+        #delele {
+            background: rgb(34, 190, 230);
+            width: 70px;
+        }
+        
+        .modal {
+            display: block;
+            /* 默认隐藏 */
+            position: fixed;
+            /* 固定定位 */
+            z-index: 1;
+            /* 设置在顶层 */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .div-query {
+            width: 500px;
+            margin-left: 800px;
+        }
+        
+        .pag {
+            width: 500px;
+            margin-left: 450px;
+        }
+        
+        .pagination {
+            list-style: none;
+            display: inline-block;
+            padding: 0;
+            margin-top: 10px;
+            float: none;
+        }
+        
+        .pagination li {
+            display: inline;
+            text-align: center;
+        }
+        
+        .pagination a {
+            float: left;
+            display: block;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 5px 12px;
+            color: rgb(17, 4, 4);
+            margin-left: -1px;
+            border: 1px solid transparent;
+            line-height: 1.5;
+            border-radius: 100%;
+        }
+        
+        .pagination a:hover {
+            float: left;
+            display: block;
+            font-size: 14px;
+            text-decoration: none;
+            padding: 5px 12px;
+            color: rgb(17, 4, 4);
+            margin-left: -1px;
+            border: 1px solid transparent;
+            line-height: 1.5;
+            border-radius: 100%;
+            background-color: white;
+        }
+        
+        .pagination a:active {
+            cursor: default;
+            outline: none;
+            background-color: white;
+        }
+        
+        input:focus {
+            background-color: rgb(37, 216, 192);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main">
+        <!-- 主容器 -->
+        <div class="top">
+            <!-- 头部菜单栏 -->
+            <img src="./img/1.jpg" class="library-topimg">
+            <!--菜单栏图标-->
+
+            <a th:href="@{/RootUserList}">用户列表</a>
+            <a href="#b">图书借阅与归还</a>
+            <a href="#c">书库</a>
+            <a th:href="@{/Announcement}">首页公告管理</a>
+            <a href="#e">图书借阅统计</a>
+
+        </div>
+
+        <div class="main-windows">
+            <!--主界面-->
+            <div class=div-query>
+                <p><input type="text" class="query-text" placeholder="请输入关键字"><button class="query-button" type="submit">搜索</button></p>
+            </div>
+            <table class="account">
+                <!-- 用户账户表格 -->
+                <tr>
+                    <th>姓名</th>
+                    <th>ID</th>
+                </tr>
+                <tr th:each="User:${UserList}">
+                    <td th:text="${User.getUser_name()}"></td>
+                    <td th:text="${User.getUser_id()}"></td>
+                    <td class="show"><a th:href="@{/RootUserInfo/{ID}(ID=${User.getUser_id()})}"><button v-on:click="show">查看</button></a></td>
+                    <td class="cancel"><a th:href="@{/RootUserDelete/{ID}(ID=${User.getUser_id()})}"><button>注销</button></td></a>
+                </tr>
+            </table>
+
+            <!-- 分页样式 -->
+            <div class="pag">
+                <ul class="pagination">
+                    <li><a href="#" class="prev">&laquo;</a></li>
+                    <li><a href="#" class="active">1</a></li>
+                    <li> <a href="#">2</a></li>
+                    <li> <a href="#">3</a></li>
+                    <li> <a href="#">4</a></li>
+                    <li> <a href="#">5</a></li>
+                    <li> <a href="#">6</a></li>
+                    <li> <a href="#">7</a></li>
+                    <li> <a href="#">8</a></li>
+                    <li> <a href="#">9</a></li>
+                    <li><a href="#" class="next">&raquo;</a></li>
+                </ul>
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+    <script>
+        new Vue({
+            el: '#main',
+            data: {
+                Visible: false,
+            },
+            methods: {
+                show: function() {
+                    this.Visible = !this.Visible
+                },
+                hide: function() {
+                    this.Visible = !this.Visible
+                }
+            },
+        })
+    </script>
+
+
+</body>
+
+</html>

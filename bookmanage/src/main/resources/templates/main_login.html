@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+</head>
+
+<head>
+    <script>
+        function validateForm() {
+            var id = document.forms["login"]["user_id"].value;
+            if (id == null || id == "" || id.length >= 30) {
+                alert("ID错误");
+                return false;
+            }
+            var password = document.forms["login"]["user_password"].value;
+            if (password == null || password == "" || password.length >= 30) {
+                alert("密码错误");
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- <form name="myForm" action="demo-form.php" onsubmit="return validateForm();" method="post"> -->
+    <form name="login" action="/main_login" onsubmit="return validateForm();" method="post">
+        登录ID：<input type="text" id="user_id" name="user_id"> <br> 输入密码：
+        <input type="password" id="user_pwd" name="user_pwd"><br>
+        <input type="submit" id="user_register" value="登录"><br>
+
+    </form>
+
+</body>
+
+</html>

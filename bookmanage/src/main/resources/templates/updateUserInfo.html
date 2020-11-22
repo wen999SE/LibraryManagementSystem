@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<center>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <script>
+                function validateForm() {
+                var name = document.forms["register"]["user_name"].value;
+                if (name == null || name == "" || name.length >= 20) {
+                    alert("姓名错误");
+                    return false;
+                }
+
+                var sex = document.forms["register"]["user_sex"].value;
+                if (sex == null || sex == "") {
+                    alert("性别错误");
+                    return false;
+                }
+
+                var age = document.forms["register"]["user_age"].value;
+                if (age == null || age == "") {
+                    alert("年龄错误");
+                    return false;
+                }
+
+                var email = document.forms["register"]["user_email"].value;
+                var atpos = email.indexOf("@");
+                var dotpos = email.lastIndexOf(".");
+                if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= email.length || email.length >= 30) {
+                    alert("不是一个有效的 e-mail 地址");
+                    return false;
+                }
+
+
+                var born = document.forms["register"]["user_born"].value;
+                if (born == null || born == "") {
+                    alert("错误");
+                    return false;
+                }
+
+                var borrow = document.forms["register"]["user_borrow"].value;
+                if (borrow == null || borrow == "") {
+                    alert("错误");
+                    return false;
+                }
+
+                var phone = document.forms["register"]["user_phone"].value;
+                if (phone == null || phone == "") {
+                    alert("错误");
+                    return false;
+                }
+
+                var address = document.forms["register"]["user_address"].value;
+                if (address == null || address == "") {
+                    alert("错误");
+                    return false;
+                }
+
+
+            }
+        </script>
+    </head>
+
+    <body>
+        <table border="1" cellspacing="0" cellpadding="0" style="border-style:none">
+            <form name="register" action="/register" onsubmit="return validateForm();" method="post">
+                <tr>
+                    <td>姓名</td>
+                    <td><input  type="text" id="user_name" th:  name="user_name" style="border-style:none"></td>
+                    <td>性别</td>
+                    <td><input type="text" name="user_sex" id="user_sex" ></td>
+                    <td>年龄</td>
+                    <td><input type="text" name="user_age" id="user_age"></td>
+                </tr>
+                <tr>
+                    <td>邮箱</td>
+                    <td><input type="text" name="user_email" id="user_email"></td>
+                    <td>出生年月</td>
+                    <td><input type="text" name="user_born" id="user_born"></td>
+                    <td>借阅D</td>
+                    <td><input type="text" name="user_borrow" id="user_borrow"></td>
+                </tr>
+                <tr>
+                    <td>联系电话</td>
+                    <td><input type="text" name="user_phone" id="user_phone"></td>
+                    <td>居住地址</td>
+                    <td><input type="text" name="user_address" id="user_address"></td>
+                </tr>
+                <tr>
+                    <td>个人描述</td>
+                    <td><input type="text" name="user_info" id="user_info"></td>
+                </tr>
+                <tr>
+                    <td style="border-style:none"></td>
+                    <td style="border-style:none"></td>
+                    <td style="border-style:none"></td>
+                    <td style="border-style:none"></td>
+                    <td style="border-style:none"></td>
+                    <td style="border-style:none"><input type="submit" id="register" value="编辑"></td>
+                </tr>
+            </form>
+        </table>
+    </body>
+</center>
+
+</html>
