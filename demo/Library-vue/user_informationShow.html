@@ -1,0 +1,163 @@
+<!DOCtype html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>信息修改界面</title>
+</head>
+
+
+
+<script>
+    function validateForm() {
+
+    }
+
+    function validateForm_password() {
+        var password = document.forms["informationPassword"]["information_password"].value;
+        // reg = /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)([`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘'，。、]).{8,}$/;
+        reg1 = /([a-z])/;
+        reg2 = /([A-Z])/;
+        reg3 = /([`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘'，。、])/;
+        if (password == null || password == "" || password.length <= 8 || password.length > 30) {
+            alert("密码输入不小于8位");
+            return false;
+        }
+        if (!reg1.test(password)) {
+            alert("要求含有小写字母");
+            return false;
+        }
+
+        if (!reg2.test(password)) {
+            alert("要求含有大写字母");
+            return false;
+        }
+
+        if (!reg3.test(password)) {
+            alert("要求含有特殊字符");
+            return false;
+        }
+        var passwordcon = document.forms["informationPassword"]["information_passwordcon"].value;
+        if (password != passwordcon) {
+            alert("两次密码不一致");
+            return false;
+        }
+    }
+</script>
+<style>
+    #main {
+        width: 100%;
+        height: 100%;
+        background-color: aquamarine;
+        position: fixed;
+    }
+    
+    input {
+        height: 20px;
+    }
+    
+    th {
+        font-size: 25px;
+        background-color: rgb(255, 255, 255);
+    }
+    
+    td {
+        background-color: whitesmoke;
+    }
+    
+    .list {
+        width: 500px;
+        height: 30px;
+        border: 1px solid red;
+    }
+    
+    #btn-edi {
+        width: 6%;
+        height: 35px;
+        margin-left: 40%;
+    }
+    
+    #btn-edi #information_register {
+        width: 100%;
+        height: 100%;
+        background-color: salmon;
+        cursor: pointer;
+    }
+    
+    .div-form {
+        border: red 1px solid;
+    }
+    
+    .address {
+        width: 390px;
+    }
+</style>
+</head>
+
+<body>
+    <div id="main">
+        <!--主容器-->
+        <div class="list">
+            <a href="">首页</a>
+            <h>/</h>
+            <a href="">我是借阅者</a>
+            <h>/</h>
+            <a href="">我的信息</a>
+            <h>/</h>
+            <a href="./user_informationShow.html">信息修改</a>
+        </div>
+
+
+
+        <div clsass="div-form">
+            <table border="1" cellspacing="0" cellpadding="0" style="border-style:none">
+                <form name="information" action="./user_informationEdition.html" onsubmit="return validateForm();" method="post">
+                    <tr>
+                        <th colspan="6">个人资料</th>
+                    </tr>
+                    <tr>
+                        <td>姓名</td>
+                        <td><input type="text" id="information_name" name="information_name" style="border-style:none" readonly="true"></td>
+                        <td>性别</td>
+                        <td><input type="text" name="information_sex" id="information_sex" style="border-style:none" readonly="true"></td>
+                        <td>年龄</td>
+                        <td><input type="text" name="information_age" id="information_age" style="border-style:none" readonly="true"></td>
+                    </tr>
+                    <tr>
+                        <td>邮箱</td>
+                        <td><input type="text" name="information_email" id="information_email" style="border-style:none" readonly="true"></td>
+                        <td>出生年月</td>
+                        <td><input type="text" name="information_born" id="information_born" style="border-style:none" readonly="true"></td>
+                        <td>借阅D</td>
+                        <td><input type="text" name="information_borrow" id="information_borrow" style="border-style:none" readonly="true"></td>
+                    </tr>
+                    <tr>
+                        <td>联系电话</td>
+                        <td><input type="text" name="information_phone" id="information_phone" style="border-style:none" readonly="true"></td>
+                        <td>居住地址</td>
+                        <td colspan="3"><input type="text" class="address" name="information_address" id="information_address" style="border-style:none" readonly="true"></td>
+                    </tr>
+                    <tr>
+                        <td>个人描述</td>
+                        <td><input type="text" name="information_info" id="information_info" style="border-style:none" readonly="true"></td>
+                    </tr>
+                    <!--
+                    <tr id="special">
+                        <td style="border-style:none"></td>
+                        <td style="border-style:none"></td>
+                        <td style="border-style:none"></td>
+                        <td style="border-style:none"></td>
+                        <td style="border-style:none"></td>
+                        <td style="border-style:none"><input type="submit" id="information_register" value="编辑"></td>
+                    </tr>-->
+
+                </form>
+
+            </table>
+            <div id="btn-edi">
+                <a href="./user_informationEdition.html"><input type="submit" id="information_register" value="编辑"></a>
+            </div>
+        </div>
+</body>
+
+</html>
