@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bootstrap Material Admin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Poppins:300,400,700}">
+    <link rel="stylesheet" th:href="@{css/style.default.css}" id="theme-stylesheet">
+</head>
+<script>
+    function validateForm() {
+        var id = document.forms["register"]["user_id"].value;
+        if (id == null || id == "") {
+            alert("登录ID为空,注册失败");
+            return false;
+        }
+        if (id.length > 30) {
+            alert("登录ID大于30位,注册失败");
+            return false;
+        }
+
+
+        var name = document.forms["register"]["user_name"].value;
+        var hanzi = /^[\u4e00-\u9fa5]+$/;
+        if (name == null || name == "") {
+
+            alert("姓名为空,注册失败");
+            return false;
+        }
+        if (name.length > 30) {
+            alert("姓名长度超过30位,注册失败");
+            return false;
+        }
+
+
+        if (!hanzi.test(name)) {
+            alert("用户名需要是汉字");
+            return false;
+        }
+
+        var email = document.forms["register"]["user_email"].value;
+        var atpos = email.indexOf("@");
+        var dotpos = email.lastIndexOf(".");
+        if (email == null || email == "") {
+
+            alert("邮箱为空,注册失败");
+            return false;
+        }
+        if (email.length > 30) {
+
+            alert("提示栏提示“邮箱长度超过30位");
+            return false;
+        }
+
+
+
+        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= email.length || email.length >= 30) {
+            alert("不是一个有效的 e-mail 地址");
+            return false;
+        }
+
+            var password = document.forms["register"]["user_pwd"].value;
+        // reg = /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)([`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘'，。、]).{8,}$/;
+        reg1 = /([a-z])/;
+        reg2 = /([A-Z])/;
+        reg3 = /([`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘'，。、])/;
+        if (password == null || password == "") {
+
+            alert("确认密码为空,注册失败");
+            return false;
+        }
+        if (password.length < 8) {
+            alert("密码长度不足8位,注册失败");
+            return false;
+        }
+        if (password.length > 30) {
+            alert("密码长度大于30位,注册失败");
+            return false;
+        }
+        if (!reg1.test(password)) {
+            alert("不含小写字母");
+            return false;
+        }
+
+        if (!reg2.test(password)) {
+            alert("不含大写字母");
+            return false;
+        }
+
+        if (!reg3.test(password)) {
+            alert("不含特殊字符");
+            return false;
+        }
+
+
+        var passwordcon = document.forms["register"]["user_pwdcon"].value;
+        if (password != passwordcon) {
+            alert("密码和确认密码不一致,注册失败");
+            return false;
+        }
+        if (passwordcon == null || passwordcon == "") {
+
+            alert("确认密码为空,注册失败");
+            return false;
+        }
+
+    }
+</script>
+
+<body>
+<div class="page login-page">
+    <div class="container d-flex align-items-center">
+        <div class="form-holder has-shadow">
+            <div class="row">
+                <!-- Logo & Information Panel-->
+                <div class="col-lg-6">
+                    <div class="info d-flex align-items-center">
+                        <div class="content">
+                            <div class="logo">
+                                <h1>欢迎注册</h1>
+                            </div>
+                            <p>图书管理系统</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <form name="register" action="/main_register" onsubmit="return validateForm();" method="post">
+                    <h1>用户在线注册</h1>
+                    登录ID:<input type="text" id="user_id" name="user_id"> <br> <br>
+                    姓名:<input type="text" id="user_name" name="user_name"> <br> <br>
+                    邮箱:<input type="text" id="user_email" name="user_email"> <br> <br>
+                    输入密码:<input type="password" id="user_pwd" name="user_pwd"> <br> <br>
+                    确认密码:<input type="password" id="user_pwdcon" name="user_pwdcon"> <br> <br>
+                    <input type="submit" id="register" value="注册"><br>
+                </form> -->
+                <!-- Form Panel    -->
+                <div class="col-lg-6 bg-white">
+                    <div class="form d-flex align-items-center">
+                        <div class="content">
+
+                            <form name="register" action="/main_register" onsubmit="return validateForm();" method="post">
+                                <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+                                <div class="form-group">
+                                    <input id="user_id" class="input-material" type="text" name="user_id" placeholder="请输入登录ID">
+                                </div>
+
+                                <div class="form-group">
+                                    <input id="user_name" class="input-material" type="text" name="user_name" placeholder="请输入姓名">
+                                </div>
+
+                                <div class="form-group">
+                                    <input id="user_email" class="input-material" type="text" name="user_email" placeholder="请输入邮箱">
+                                </div>
+
+                                <div class="form-group">
+                                    <input id="user_pwd" class="input-material" type="password" name="user_pwd" placeholder="请输入密码">
+                                </div>
+
+                                <div class="form-group">
+                                    <input id="user_pwdcon" class="input-material" type="password" name="user_pwdcon" placeholder="确认密码">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="submit" id="register" class="btn btn-primary" value="注册"><br>
+                                    <!-- <button id="regbtn" type="button" name="registerSubmit" class="btn btn-primary">注册</button> -->
+                                </div>
+                                <small>已有账号?</small><a th:href="@{/}" class="signup">&nbsp;登录</a>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- JavaScript files-->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+    $(function() {
+        /*错误class  form-control is-invalid
+        正确class  form-control is-valid*/
+        var flagName = false;
+        var flagPas = false;
+        var flagPass = false;
+        /*验证用户名*/
+        var name, passWord, passWords;
+        $("#register-username").change(function() {
+            name = $("#register-username").val();
+            if (name.length < 2 || name.length > 10) {
+                $("#register-username").removeClass("form-control is-valid")
+                $("#register-username").addClass("form-control is-invalid");
+                flagName = false;
+            } else {
+                $("#register-username").removeClass("form-control is-invalid")
+                $("#register-username").addClass("form-control is-valid");
+                flagName = true;
+            }
+        })
+        /*验证密码*/
+        $("#register-password").change(function() {
+            passWord = $("#register-password").val();
+            if (passWord.length < 6 || passWord.length > 18) {
+                $("#register-password").removeClass("form-control is-valid")
+                $("#register-password").addClass("form-control is-invalid");
+                flagPas = false;
+            } else {
+                $("#register-password").removeClass("form-control is-invalid")
+                $("#register-password").addClass("form-control is-valid");
+                flagPas = true;
+            }
+        })
+        /*验证确认密码*/
+        $("#register-passwords").change(function() {
+            passWords = $("#register-passwords").val();
+            if ((passWord != passWords) || (passWords.length < 6 || passWords.length > 18)) {
+                $("#register-passwords").removeClass("form-control is-valid")
+                $("#register-passwords").addClass("form-control is-invalid");
+                flagPass = false;
+            } else {
+                $("#register-passwords").removeClass("form-control is-invalid")
+                $("#register-passwords").addClass("form-control is-valid");
+                flagPass = true;
+            }
+        })
+
+
+        $("#regbtn").click(function() {
+            if (flagName && flagPas && flagPass) {
+                localStorage.setItem("name", name);
+                localStorage.setItem("passWord", passWord);
+                location = "login.html"
+            } else {
+                if (!flagName) {
+                    $("#register-username").addClass("form-control is-invalid");
+                }
+                if (!flagPas) {
+                    $("#register-password").addClass("form-control is-invalid");
+                }
+                if (!flagPass) {
+                    $("#register-passwords").addClass("form-control is-invalid");
+                }
+            }
+        })
+    })
+</script>
+</body>
+
+</html>

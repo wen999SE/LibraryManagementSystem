@@ -1,0 +1,71 @@
+/*#main_login {*/
+/*    background: url(../img/login.jpg) no-repeat;*/
+/*    width: 200px;*/
+/*    height: 200px;*/
+/*    border: 0px;*/
+/*    cursor: pointer;*/
+/*    margin-left: 10px;*/
+/*}*/
+
+/*#main_register {*/
+/*    background: url(../img/register.jpg) no-repeat;*/
+/*    width: 200px;*/
+/*    height: 200px;*/
+/*    border: 0px;*/
+/*    cursor: pointer;*/
+/*    margin-left: 300px;*/
+/*}*/
+
+/*#main {*/
+/*    background-color: aquamarine;*/
+/*    height: 100%;*/
+/*    width: 100%;*/
+/*    position: fixed;*/
+/*}*/
+
+/*.div-form {*/
+/*    width: 80%;*/
+/*    height: 80%;*/
+/*    margin-top: 20%;*/
+/*    margin-left: 20%;*/
+/*}*/
+#main_login {
+    background: url(../img/login.jpg) no-repeat;
+    width: 200px;
+    height: 200px;
+    border: 0px;
+    cursor: pointer;
+    margin-left: 200%;
+    margin-top: 80%;
+}
+
+#main_register {
+    background: url(../img/register.jpg) no-repeat;
+    width: 200px;
+    height: 200px;
+    border: 0px;
+    cursor: pointer;
+    margin-left: 300%;
+    margin-top: 80%;
+}
+
+#main {
+    background-color: rgb(33, 211, 143);
+    height: 110%;
+    width: 110%;
+    position: fixed;
+}
+
+.div-form {
+    width: 80%;
+    height: 80%;
+}
+/*
+    .img {
+        witdth: 10%;
+        height: 70%;
+        margin-top: -20%;
+        margin-left: 50%;
+        margin-right: 15%;
+        border: 1px solid brown;
+    }*/

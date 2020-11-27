@@ -1,0 +1,41 @@
+#user_information {
+    background: url(/static/img/myinformation.jpg) no-repeat;
+    width: 200px;
+    height: 200px;
+    border: 0px;
+    cursor: pointer;
+    margin-left: 20%;
+    margin-top: 80%;
+}
+
+#user_book {
+    background: url(/static/img/mybook.jpg) no-repeat;
+    width: 200px;
+    height: 200px;
+    border: 0px;
+    cursor: pointer;
+    margin-left: 190%;
+    margin-top: 80%;
+}
+
+#user_library {
+    background: url(/static/img/lib.jpg) no-repeat;
+    width: 200px;
+    height: 200px;
+    border: 0px;
+    cursor: pointer;
+    margin-left: 350%;
+    margin-top: 80%;
+}
+
+#main {
+    background-color: rgb(33, 211, 143);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.div-form {
+    width: 10%;
+    height: 10%;
+}

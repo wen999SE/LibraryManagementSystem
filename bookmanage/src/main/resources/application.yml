@@ -1,8 +1,0 @@
-##分页插件的配置
-pagehelper:
-  helperDialect: mysql
-  reasonable: true
-  supportMethodsArguments: true
-  params: count=countSql
-
-

@@ -1,0 +1,31 @@
+#user_informationChange {
+    background: url(../img111/infomationchange.jpg) no-repeat;
+    width: 200px;
+    height: 200px;
+    border: 0px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#user_history {
+    background: url(../img111/history.jpg) no-repeat;
+    width: 200px;
+    height: 200px;
+    border: 0px;
+    cursor: pointer;
+    margin-left: 300px;
+}
+
+#main {
+    background-color: aquamarine;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+.div-form {
+    width: 80%;
+    height: 80%;
+    margin-top: 20%;
+    margin-left: 20%;
+}

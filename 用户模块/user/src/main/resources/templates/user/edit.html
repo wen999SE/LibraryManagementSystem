@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Dashboard Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/dashboard.css}" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+<script>
+    function validateForm() {
+        var name = document.forms["information"]["user_name"].value;
+        if (name == null || name == "" || name.length >= 20) {
+            alert("名字输入长度过长或为空");
+            return false;
+        }
+
+        var sex = document.forms["information"]["user_sex"].value;
+        if (sex == null || sex == "" || sex.length>1) {
+            alert("性别输入长度过长或为空");
+            return false;
+        }
+
+        var age = document.forms["information"]["user_age"].value;
+        if (age == null || age == "") {
+            alert("年龄输入长度过长或为空");
+            return false;
+        }
+
+        var email = document.forms["information"]["user_email"].value;
+        var atpos = email.indexOf("@");
+        var dotpos = email.lastIndexOf(".");
+        if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= email.length || email.length >= 30) {
+            alert("不是一个有效的 e-mail 地址");
+            return false;
+        }
+
+
+        var born = document.forms["information"]["user_birthday"].value;
+        if (born == null || born == "") {
+            alert("出生年月输入长度过长或为空");
+            return false;
+        }
+
+        var borrow = document.forms["information"]["user_borrowid"].value;
+        if (borrow == null || borrow == "") {
+            alert("错误");
+            return false;
+        }
+
+        var phone = document.forms["information"]["user_phone"].value;
+        if (phone == null || phone == "") {
+            alert("联系电话输入长度过长或为空");
+            return false;
+        }
+
+        var address = document.forms["information"]["user_address"].value;
+        if (address == null || address == "") {
+            alert("居住地址输入长度过长或为空");
+            return false;
+        }
+        alert("保存信息成功");
+
+    }
+
+    function validateForm_password() {
+        var password = document.forms["informationPassword"]["information_password"].value;
+        // reg = /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)([`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘'，。、]).{8,}$/;
+        reg1 = /([a-z])/;
+        reg2 = /([A-Z])/;
+        reg3 = /([`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘'，。、])/;
+        if (password == null || password == "" || password.length <= 8 || password.length > 30) {
+            alert("密码输入不小于8位");
+            return false;
+        }
+        if (!reg1.test(password)) {
+            alert("要求含有小写字母");
+            return false;
+        }
+
+        if (!reg2.test(password)) {
+            alert("要求含有大写字母");
+            return false;
+        }
+
+        if (!reg3.test(password)) {
+            alert("要求含有特殊字符");
+            return false;
+        }
+
+        var passwordcon = document.forms["informationPassword"]["information_passwordcon"].value;
+        if (password != passwordcon) {
+            alert("两次密码不一致");
+            return false;
+        }
+        alert("修改密码成功");
+    }
+</script>
+<body>
+<!--顶部导航栏-->
+<div th:replace="~{commons/commons::topbar}" }></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!--侧边栏-->
+        <div th:replace="~{commons/commons::siderbar(active='list.html')}"></div>
+
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <form name="information" onsubmit="return validateForm();" th:href="@{/UserInfo}" th:action="@{/RootUserUpdate/{id}(id=${UserInfo.getUser_id()})}" method="post">
+
+                <div class="form-group">
+                    <label>名字</label>
+                    <input type="text" name="user_name"  id="user_name" class="form-control" th:value="${UserInfo.getUser_name()}">
+                </div>
+
+                <div class="form-group">
+                    <label>性别</label><br/>
+
+                    <select type="text" class="form-control" id="user_sex" name="user_sex" th:value ="${UserInfo.getUser_sex()}">
+                        <option th:if="${UserInfo.getUser_sex()}=='男'"  name="user_sex" selected="selected" value="男">男</option>
+                        <option th:unless="${UserInfo.getUser_sex()}=='男'"name="user_sex" value="男">男</option>
+                        <option th:if="${UserInfo.getUser_sex()}=='女'" name="user_sex" selected="selected" value="女">女</option>
+                        <option th:unless="${UserInfo.getUser_sex()}=='女'" name="user_sex" value="女">女</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>年龄</label>
+                    <input type="text" name="user_age"  id="user_age" class="form-control" th:value="${UserInfo.getUser_age()}">
+                </div>
+
+                <div class="form-group">
+                    <label>邮箱</label>
+                    <input type="text" name="user_email"  id="user_email" class="form-control" th:value="${UserInfo.getUser_email()}">
+                </div>
+
+                <div class="form-group">
+                    <label>密码</label>
+                    <input type="text" name="user_pwd"  id="user_pwd" class="form-control" th:value="${UserInfo.getUser_pwd()}">
+                </div>
+
+                <div class="form-group">
+                    <label>生日</label>
+                    <input type="text" name="user_birthday"  id="user_birthday" class="form-control" th:value="${UserInfo.getUser_birthday()}">
+                </div>
+
+                <div class="form-group">
+                    <label>手机号</label>
+                    <input type="text" name="user_phone" id="user_phone" class="form-control" th:value="${UserInfo.getUser_phone()}">
+                </div>
+
+                <div class="form-group">
+                    <label>地址</label>
+                    <input type="text" name="user_address"  id="user_address" class="form-control" th:value="${UserInfo.getUser_address()}">
+                </div>
+
+                <div class="form-group">
+                    <label>信息</label>
+                    <input type="text" name="user_describe" id="user_describe" class="form-control" th:value="${UserInfo.getUser_describe()}">
+                </div>
+
+                <button type="submit" class="btn btn-primary">确定</button>
+                <a class="btn btn-sm btn-success" >返回</a>
+            </form>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/js/jquery-3.2.1.slim.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/bootstrap.min.js}"></script>
+
+<script type="text/javascript" th:src="@{js/jquery-1.8.3.min.js}"></script>
+<script type="text/javascript" th:src="@{js/menu.js}"></script>
+
+<!-- Icons -->
+<script type="text/javascript" th:src="@{/js/feather.min.js}"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Graphs -->
+<script type="text/javascript" th:src="@{/js/Chart.min.js}"></script>
+<script>
+    var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            datasets: [{
+                data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+                lineTension: 0,
+                backgroundColor: 'transparent',
+                borderColor: '#007bff',
+                borderWidth: 4,
+                pointBackgroundColor: '#007bff'
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: false
+                    }
+                }]
+            },
+            legend: {
+                display: false,
+            }
+        }
+    });
+</script>
+
+</body>
+
+</html>
